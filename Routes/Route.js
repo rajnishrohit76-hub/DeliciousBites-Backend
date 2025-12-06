@@ -15,7 +15,9 @@ const {
   getSnacksProducts,
   getAllOrders,
   addAllDrinksProducts,
-  getDrinksProducts
+  getDrinksProducts,
+  addAllDessertsProducts,
+  getDessertsProducts
 } = require("../Controller/ProductController");
 
 const router = require("express").Router();
@@ -29,6 +31,7 @@ router.post("/saveNonVeg", addNonVegProduct);
 router.post("/saveAllNonVeg", addAllNonVegProducts);
 router.post("/saveAllSnacks", addAllSnacksProducts);
 router.post("/saveAllDrinks", addAllDrinksProducts);
+router.post("/saveAllDesserts", addAllDessertsProducts);
 
 // POST Calls to Save Products all Products
 router.post("/save", addProduct);
@@ -43,6 +46,7 @@ router.get("/veg", getVegProducts);
 router.get("/nonveg", getNonVegProducts);
 router.get("/snacks", getSnacksProducts);
 router.get("/drinks", getDrinksProducts);
+router.get("/desserts", getDessertsProducts);
 
 // Get Order Details
 router.get('/getorders', getAllOrders);

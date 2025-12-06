@@ -6,6 +6,8 @@ const productModel = mongoose.model("Items", ProductSchema);
 const vegProduct = mongoose.model("Veg", ProductSchema);
 const nonVegProduct = mongoose.model("Non-Veg", ProductSchema);
 const snacksProduct = mongoose.model("Snacks", ProductSchema);
+const drinksProduct = mongoose.model("Drinks", ProductSchema);
+const dessertsProduct = mongoose.model("Desserts", ProductSchema);
 let orderModel = mongoose.model("Order Details", orderSchema);
 
 // Saving Single Veg Product
@@ -38,6 +40,11 @@ addNewDrinksProducts = (newProducts) => {
     drinksProduct.insertMany(newProducts);
 }
 
+// Saving Multiple Desserts Products
+addNewDessertsProducts = (newProducts) => {
+    dessertsProduct.insertMany(newProducts);
+}
+
 
 // Fetching All Veg Products
 fetchAllVegProducts = () => {
@@ -59,6 +66,14 @@ fetchAllDrinksProducts = () => {
     return drinksProduct.find();
 };
 
+// Fetching All Desserts Products
+fetchAllDessertsProducts = () => {
+    return dessertsProduct.find();
+}
+
+
+
+
 // Add single product
 const addNewProduct = (newProduct) => {
     new productModel(newProduct).save();
@@ -79,7 +94,7 @@ fetchVegProducts = () => {
     return productModel.find({ category: "veg" });
 }
 
-// Fetch veg products only
+// Fetch Non veg products only
 fetchnonVegProducts = () => {
     return productModel.find({ category: "non-veg" });
 }
@@ -143,6 +158,8 @@ module.exports = {  addNewProduct,
                     addNewSnacksProducts,
                     fetchAllSnacksProducts,
                     fetchAllDrinksProducts,
+                    addNewDessertsProducts,
+                    fetchAllDessertsProducts,
                     fetchAllOrders };
 
 

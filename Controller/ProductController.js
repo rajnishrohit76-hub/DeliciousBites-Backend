@@ -1,3 +1,4 @@
+const { add } = require("../Schema/ProductSchema");
 const {
   addNewVegProduct,
   addNewVegProducts,
@@ -17,7 +18,9 @@ const {
   fetchAllSnacksProducts,
   fetchAllOrders,
   addNewDrinksProducts,
-  fetchAllDrinksProducts
+  fetchAllDrinksProducts,
+  addNewDessertsProducts,
+  fetchAllDessertsProducts
 } = require("../Services/ProductService");
 
 // Add single Veg Product
@@ -50,16 +53,22 @@ const addAllSnacksProducts = (req, res) => {
   res.send("All Snacks Products Saved Successfully");
 };
 
+// Add Multiple Drinks Products
 const addAllDrinksProducts = (req, res) => {
   addNewDrinksProducts(req.body);
   res.send("All Drinks Products Saved Successfully");
 };
 
+// Add Multiple Desserts Products
+const addAllDessertsProducts = (req, res) => {
+  addNewDessertsProducts(req.body);
+  res.send("All Desserts Products Saved Successfully");
+}
 
 
-
-
-
+// =====================================================================================
+// Controller Functions to Fetch Products from the Database
+// =======================================================================
 
 // Fetch Snacks Products
 const getSnacksProducts = async (req, res) => {
@@ -70,9 +79,6 @@ const getSnacksProducts = async (req, res) => {
     res.status(500).json({ message: "Server Error" });
   }
 };
-
-
-
 
 // Fetch Veg products
 const getVegProducts = async (req, res) => {
@@ -105,7 +111,15 @@ const getDrinksProducts = async (req, res) => {
   }
 };
 
-
+// fetch Desserts products
+const getDessertsProducts = async (req, res) => {
+  try {
+    const desserts = await fetchAllDessertsProducts();
+    res.json(desserts);
+  } catch {
+    res.status(500).json({ message: "Server Error" });
+  }
+};
 
 const addProduct = (req, res) => {
   addNewProduct(req.body);
@@ -179,6 +193,7 @@ module.exports = {
   getAllProducts,
   getVegProducts,
   getNonVegProducts,
+  getDessertsProducts,
   removeByCategory,
   getPaginatedProducts,
   addVegProduct,
@@ -191,4 +206,5 @@ module.exports = {
   getDrinksProducts,
   getAllOrders,
   addAllDrinksProducts,
+  addAllDessertsProducts,
 };
