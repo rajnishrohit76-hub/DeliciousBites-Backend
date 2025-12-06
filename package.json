@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "node local-dev.js",
-    "dev": "nodemon local-dev.js"
+    "start": "node local-dev.js", 
+    "dev": "nodemon local-dev.js",
+    "build": ""                  
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",
