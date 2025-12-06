@@ -1,3 +1,2 @@
-const app = require("./api/server"); // lowercase
-
-app.listen(3000, () => console.log("Running locally on http://localhost:3000"));
+const app = require("./api/server");
+app.listen(3000, () => console.log("Local Server running at http://localhost:3000"));

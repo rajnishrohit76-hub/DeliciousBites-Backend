@@ -2,8 +2,7 @@
   "name": "restapi-backend",
   "version": "1.0.0",
   "scripts": {
-    "dev": "nodemon local-dev.js",
-    "start": "node api/server.js"
+    "dev": "nodemon local-dev.js"
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",

@@ -1,3 +1,4 @@
+// api/server.js
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
@@ -15,27 +16,30 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Database connection (serverless)
+let isConnected;
+async function connectDB() {
+  if (isConnected) return;
+  await mongoose.connect(process.env.MONGO_DB);
+  isConnected = true;
+  console.log("MongoDB Connected Successfully (Serverless)");
+}
+connectDB().catch(err => console.log("MongoDB Connection Failed:", err));
+
 // Routes
 app.use("/auth", authRouter);
 app.use("/product", productRouter);
 app.use("/payment", paymentRouter);
 
-// Optional root route
+// Root route
 app.get("/", (req, res) => {
   res.send("Express Backend is running on Vercel!");
 });
 
-// Database connection (serverless)
-let connection;
-async function connectDB() {
-  if (connection) return;
-  connection = await mongoose.connect(process.env.MONGO_DB, {});
-  console.log("MongoDB Connected Successfully (Serverless)");
-}
-connectDB().catch(err => console.log("MongoDB Connection Failed:", err));
-
 // Export as serverless function
-module.exports = serverless(app);
+module.exports = app;
+module.exports.handler = serverless(app);
+
 
 
 
