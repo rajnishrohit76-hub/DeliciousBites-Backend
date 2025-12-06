@@ -17,7 +17,7 @@
     "serverless-http": "^4.0.0"
   },
   "engines": {
-    "node": "20.x"
+    "node": "20"
   },
   "devDependencies": {
     "nodemon": "^3.1.11"
