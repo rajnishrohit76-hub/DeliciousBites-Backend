@@ -6,9 +6,9 @@ const mongoose = require("mongoose");
 
 
 // Routers
-const productRouter = require("./Routes/Route");
-const authRouter = require("./Routes/AuthRoute");
-const paymentRouter = require("./Routes/PaymentRoute");
+const productRouter = require("../Routes/Route");
+const authRouter = require("../Routes/AuthRoute");
+const paymentRouter = require("../Routes/PaymentRoute");
 
 const app = express();
 
