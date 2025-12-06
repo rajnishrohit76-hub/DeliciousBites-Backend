@@ -17,9 +17,9 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-app.use("/api/auth", authRouter);
-app.use("/api/product", productRouter);
-app.use("/api/payment", paymentRouter);
+app.use("/auth", authRouter);
+app.use("/product", productRouter);
+app.use("/payment", paymentRouter);
 
 // ================== DATABASE CONNECTION (SERVERLESS) ==================
 let connection;
