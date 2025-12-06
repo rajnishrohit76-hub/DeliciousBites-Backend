@@ -33,6 +33,12 @@ addNewSnacksProducts = (newProducts) => {
     snacksProduct.insertMany(newProducts);
 }
 
+// Saving Multiple Drinks Products
+addNewDrinksProducts = (newProducts) => {
+    drinksProduct.insertMany(newProducts);
+}
+
+
 // Fetching All Veg Products
 fetchAllVegProducts = () => {
     return vegProduct.find();
@@ -46,8 +52,12 @@ fetchAllNonVegProducts = () => {
 // Fetching All Snacks Products
 fetchAllSnacksProducts = () => {
     return snacksProduct.find();
-}
+};
 
+// Fetching All Drinks Products
+fetchAllDrinksProducts = () => {
+    return drinksProduct.find();
+};
 
 // Add single product
 const addNewProduct = (newProduct) => {
@@ -115,7 +125,25 @@ const fetchAllOrders = async () => {
 };
 
 
-module.exports = {  addNewProduct, addNewItems, fetchAllProducts, fetchVegProducts, deleteProductsByCategory, fetchnonVegProducts, fetchPaginatedProducts, addNewVegProduct, addNewVegProducts, addNewNonVegProduct, addNewNonVegProducts, fetchAllVegProducts, fetchAllNonVegProducts, createNewOrder, addNewSnacksProducts, fetchAllSnacksProducts, fetchAllOrders };
+module.exports = {  addNewProduct,
+                    addNewItems,
+                    fetchAllProducts,
+                    fetchVegProducts,
+                    deleteProductsByCategory,
+                    fetchnonVegProducts,
+                    fetchPaginatedProducts,
+                    addNewVegProduct,
+                    addNewVegProducts,
+                    addNewNonVegProduct,
+                    addNewNonVegProducts,
+                    addNewDrinksProducts,
+                    fetchAllVegProducts,
+                    fetchAllNonVegProducts,
+                    createNewOrder,
+                    addNewSnacksProducts,
+                    fetchAllSnacksProducts,
+                    fetchAllDrinksProducts,
+                    fetchAllOrders };
 
 
 

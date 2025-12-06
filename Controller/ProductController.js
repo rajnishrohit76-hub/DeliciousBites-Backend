@@ -15,7 +15,9 @@ const {
   createNewOrder,
   addNewSnacksProducts,
   fetchAllSnacksProducts,
-  fetchAllOrders
+  fetchAllOrders,
+  addNewDrinksProducts,
+  fetchAllDrinksProducts
 } = require("../Services/ProductService");
 
 // Add single Veg Product
@@ -48,6 +50,17 @@ const addAllSnacksProducts = (req, res) => {
   res.send("All Snacks Products Saved Successfully");
 };
 
+const addAllDrinksProducts = (req, res) => {
+  addNewDrinksProducts(req.body);
+  res.send("All Drinks Products Saved Successfully");
+};
+
+
+
+
+
+
+
 // Fetch Snacks Products
 const getSnacksProducts = async (req, res) => {
   try {
@@ -58,16 +71,21 @@ const getSnacksProducts = async (req, res) => {
   }
 };
 
-// Fetch products
+
+
+
+// Fetch Veg products
 const getVegProducts = async (req, res) => {
   try {
     const veg = await fetchVegProducts();
-    res.json(veg);
+    res.status(200).json(veg);   // ✔ only status code added
   } catch {
     res.status(500).json({ message: "Server Error" });
   }
 };
 
+ 
+// Fetch Non-Veg products
 const getNonVegProducts = async (req, res) => {
   try {
     const nonVeg = await fetchnonVegProducts();
@@ -76,6 +94,18 @@ const getNonVegProducts = async (req, res) => {
     res.status(500).json({ message: "Server Error" });
   }
 };
+
+// Fetch Drinks products
+const getDrinksProducts = async (req, res) => {
+  try {
+    const drinks = await fetchAllDrinksProducts();
+    res.json(drinks);
+  } catch {
+    res.status(500).json({ message: "Server Error" });
+  }
+};
+
+
 
 const addProduct = (req, res) => {
   addNewProduct(req.body);
@@ -158,5 +188,7 @@ module.exports = {
   createOrder,
   addAllSnacksProducts,
   getSnacksProducts,
+  getDrinksProducts,
   getAllOrders,
+  addAllDrinksProducts,
 };

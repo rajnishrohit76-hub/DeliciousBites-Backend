@@ -49,11 +49,10 @@ async function signupService({ name, email, password, phone, address, gender, ho
     country,
   });
 
-  // Create JWT
-  const token = createToken({ id: user._id });
+  // // Create JWT
+  // const token = createToken({ id: user._id });
 
   return {
-    token,
     user: {
       id: user._id,
       name: user.name,
@@ -96,7 +95,7 @@ async function loginService({ email, password }) {
 
   const token = createToken({ id: user._id });
 
-  return {
+  return { 
     token,
     user: {
       id: user._id,

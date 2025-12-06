@@ -13,11 +13,11 @@ const {
   createOrder,
   addAllSnacksProducts,
   getSnacksProducts,
-  getAllOrders
+  getAllOrders,
+  addAllDrinksProducts,
+  getDrinksProducts
 } = require("../Controller/ProductController");
 
-const authMiddleware = require("../Middleware/authMiddleware");
-const { get } = require("../Schema/ProductSchema");
 const router = require("express").Router();
 
 // POST Calls to Save Veg Products
@@ -27,9 +27,8 @@ router.post("/saveAllVeg", addAllVegProducts);
 // POST Calls to Save Non-Veg Products
 router.post("/saveNonVeg", addNonVegProduct);
 router.post("/saveAllNonVeg", addAllNonVegProducts);
-
-// Post Call to Save Snacks Products
 router.post("/saveAllSnacks", addAllSnacksProducts);
+router.post("/saveAllDrinks", addAllDrinksProducts);
 
 // POST Calls to Save Products all Products
 router.post("/save", addProduct);
@@ -42,13 +41,15 @@ router.post("/orders", createOrder);
 router.get("/", getAllProducts);
 router.get("/veg", getVegProducts);
 router.get("/nonveg", getNonVegProducts);
+router.get("/snacks", getSnacksProducts);
+router.get("/drinks", getDrinksProducts);
 
 // Get Order Details
 router.get('/getorders', getAllOrders);
 
 
 // get Snacks Products
-router.get("/snacks", getSnacksProducts);
+
 
 // GET Paginated Products
 router.get("/page", getPaginatedProducts);
