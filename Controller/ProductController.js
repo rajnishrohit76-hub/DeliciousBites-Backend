@@ -75,8 +75,9 @@ const getSnacksProducts = async (req, res) => {
   try {
     const snacks = await fetchAllSnacksProducts();
     res.json(snacks);
-  } catch {
-    res.status(500).json({ message: "Server Error" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server Error", error: err.message });
   }
 };
 
@@ -85,8 +86,9 @@ const getVegProducts = async (req, res) => {
   try {
     const veg = await fetchVegProducts();
     res.status(200).json(veg);   // ✔ only status code added
-  } catch {
-    res.status(500).json({ message: "Server Error" });
+  }catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server Error", error: err.message });
   }
 };
 
@@ -96,8 +98,9 @@ const getNonVegProducts = async (req, res) => {
   try {
     const nonVeg = await fetchnonVegProducts();
     res.json(nonVeg);
-  } catch {
-    res.status(500).json({ message: "Server Error" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server Error", error: err.message });
   }
 };
 
@@ -106,8 +109,9 @@ const getDrinksProducts = async (req, res) => {
   try {
     const drinks = await fetchAllDrinksProducts();
     res.json(drinks);
-  } catch {
-    res.status(500).json({ message: "Server Error" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server Error", error: err.message });
   }
 };
 
@@ -116,8 +120,9 @@ const getDessertsProducts = async (req, res) => {
   try {
     const desserts = await fetchAllDessertsProducts();
     res.json(desserts);
-  } catch {
-    res.status(500).json({ message: "Server Error" });
+  }catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server Error", error: err.message });
   }
 };
 
@@ -135,8 +140,9 @@ const getAllProducts = async (req, res) => {
   try {
     const products = await fetchAllProducts();
     res.json(products);
-  } catch {
-    res.status(500).json({ message: "Server Error" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server Error", error: err.message });
   }
 };
 
@@ -158,8 +164,9 @@ const getPaginatedProducts = async (req, res) => {
   try {
     const result = await fetchPaginatedProducts(page, limit, category);
     res.json(result);
-  } catch {
-    res.status(500).json({ message: "Server Error" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server Error", error: err.message });
   }
 };
 
