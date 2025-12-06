@@ -1,9 +1,8 @@
-// server.js (Vercel Serverless Compatible)
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 const mongoose = require("mongoose");
-
+const serverless = require("serverless-http");
 
 // Routers
 const productRouter = require("../Routes/Route");
@@ -21,19 +20,23 @@ app.use("/auth", authRouter);
 app.use("/product", productRouter);
 app.use("/payment", paymentRouter);
 
-// ================== DATABASE CONNECTION (SERVERLESS) ==================
+// Optional root route
+app.get("/", (req, res) => {
+  res.send("Express Backend is running on Vercel!");
+});
+
+// Database connection (serverless)
 let connection;
 async function connectDB() {
   if (connection) return;
-  connection = await mongoose.connect(process.env.MONGO_DB, {
-    // options removed intentionally (serverless handles it)
-  });
+  connection = await mongoose.connect(process.env.MONGO_DB, {});
   console.log("MongoDB Connected Successfully (Serverless)");
 }
 connectDB().catch(err => console.log("MongoDB Connection Failed:", err));
 
-// ================== EXPORT APP (DO NOT LISTEN) ==================
-module.exports = app;
+// Export as serverless function
+module.exports = serverless(app);
+
 
 
 
